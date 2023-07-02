@@ -40,17 +40,13 @@ jobs:
                     chmod +x gradlew
                     ./gradlew build
             -   name: Validate Kubernetes manifests
-                uses: alexellis/arkade-get@master
+                uses: stefanprodan/kube-tools@v1
                 with:
-                    kubectl: latest
-                    kustomize: latest
-                    kubeconform: latest
-                    kubeval: latest
-                    helm: latest
-                    jq: latest
-                    yq: latest
+                    kubectl: 1.24.3
+                    kubeval: 0.16.1
+                    # Different schema required because of https://github.com/instrumenta/kubeval/issues/301
                     command: |
-                        kubeval --strict -d k8s
+                        kubeval --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master -d k8s
 
     package:
         name: Package and Publish

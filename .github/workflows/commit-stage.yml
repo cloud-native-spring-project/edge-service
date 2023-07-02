@@ -45,9 +45,12 @@ jobs:
                     kubectl: latest
                     kustomize: latest
                     kubeconform: latest
+                    kubeval: latest
                     helm: latest
                     jq: latest
                     yq: latest
+                    command: |
+                        kubeval --strict -d k8s
 
     package:
         name: Package and Publish

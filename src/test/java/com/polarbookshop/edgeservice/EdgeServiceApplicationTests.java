@@ -34,5 +34,4 @@ class EdgeServiceApplicationTests {
     @Test
     void verifyThatSpringContextLoads() {
     }
-
 }

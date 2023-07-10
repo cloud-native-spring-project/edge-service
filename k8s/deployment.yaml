@@ -50,5 +50,12 @@ spec:
                             value: http://config-service
                         -   name: SPA_URL
                             value: http://polar-ui
+                    volumeMounts:
+                        -   name: edge-config-volume
+                            mountPath: /workspace/config
+            volumes:
+                -   name: edge-config-volume
+                    configMap:
+                        name: edge-config
             restartPolicy: Always
       
